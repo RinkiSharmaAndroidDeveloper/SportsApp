@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "186823589750",
+    "project_id": "reachmobitsports",
+    "storage_bucket": "reachmobitsports.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186823589750:android:14a495094d64df2f648457",
+        "android_client_info": {
+          "package_name": "com.image.reachmobitsports"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186823589750-6tfh5h13mhnmp8sfns6el9vguhtecsel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADpSVwFv6OrXdA85McCqKAcKSlLTgJNLM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186823589750-6tfh5h13mhnmp8sfns6el9vguhtecsel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

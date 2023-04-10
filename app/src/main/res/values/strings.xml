@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ReachMobitSports</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="english_premium_league">English Premium League</string>
+    <string name="sports_app">ReachMobi Sports App</string>
+    <string name="something_went_wrong">Something went wrong&#8230;</string>
+    <string name="txt_welcome">Welcome </string>
+    <string name="txt_dummy">Dummy</string>
+    <string name="txt_since_home">Since</string>
+    <string name="txt_type_latest_home">Home</string>
+    <string name="txt_type_latest_away">Away</string>
+    <string name="txt_show_all_list">Show All</string>
+    <string name="txt_teams_league_home">Teams League</string>
+    <string name="txt_teams_player_home">Players</string>
+</resources>

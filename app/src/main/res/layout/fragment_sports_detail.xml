@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container_view_tag"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/teal_700"
+        android:fontFamily="@font/mulish_black_900"
+        android:gravity="center"
+        android:text="@string/txt_teams_player_home"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+    />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:iconifiedByDefault="false"
+        android:iconifiedByDefault="false"
+        app:queryBackground="@android:color/transparent"
+        android:background="@drawable/search_view_back"
+       />
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_circular"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/payer_name_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:clipToPadding="false"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:focusable="true"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        tools:listitem="@layout/item_event_league_home" />
+
+</LinearLayout>
