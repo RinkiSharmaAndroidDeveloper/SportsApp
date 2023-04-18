@@ -2,11 +2,10 @@
 <resources>
     <style name="description" parent="@android:style/Widget.TextView">
         <item name="android:textSize">@dimen/text_size_16</item>
-
     </style>
 
     <style name="title" parent="@android:style/Widget.TextView">
         <item name="android:textSize">@dimen/text_size_18</item>
-
     </style>
+
 </resources>

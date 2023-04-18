@@ -1,6 +1,6 @@
 package com.image.reachmobitsports.presentation.state
 
-import com.image.reachmobitsports.data.remote.response.Teams
+import com.image.reachmobitsports.di.response.Teams
 
 
 data class SportsLeagueState(

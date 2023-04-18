@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.image.reachmobitsports.presentation.util.Resource
-import com.image.reachmobitsports.data.remote.model.Repository
+import com.image.reachmobitsports.di.remote.Repository
 import com.image.reachmobitsports.presentation.state.PlayersState
 import com.image.reachmobitsports.presentation.state.SportsLeagueState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,9 +20,6 @@ class ListViewModel @Inject constructor(private val repository: Repository) : Vi
 
     private var _playersStateMutable: MutableLiveData<PlayersState> = MutableLiveData()
     val playersStateLive: MutableLiveData<PlayersState> get() = _playersStateMutable
-
-    private var _searchPlayersMutable: MutableLiveData<PlayersState> = MutableLiveData()
-    val searchPlayersLive: MutableLiveData<PlayersState> get() = _searchPlayersMutable
 
    //This method fetches all the teams in a league and returns a
     fun getSportsList() {
@@ -73,35 +70,6 @@ class ListViewModel @Inject constructor(private val repository: Repository) : Vi
                 }
                 is Resource.Failure -> {
                     _playersStateMutable.value = PlayersState(
-                        player = result.data?.player,
-                        isLoading = result.loadingStatus,
-                        error = result.message
-                    )
-                    Log.e("Error", result.message ?: "Unknown error")
-                }
-            }
-        }
-    }
-
-    fun getSerachPlayer(playerName: String) {
-        viewModelScope.launch {
-            when (val result = repository.searchTeamPlayer(playerName)) {
-                is Resource.Loading -> {
-                    _searchPlayersMutable.value = PlayersState(
-                        player = result.data?.player,
-                        isLoading = result.loadingStatus,
-                        error = result.message
-                    )
-                }
-                is Resource.Success -> {
-                    _searchPlayersMutable.value = PlayersState(
-                        player = result.data?.player,
-                        isLoading = result.loadingStatus,
-                        error = result.message
-                    )
-                }
-                is Resource.Failure -> {
-                    _searchPlayersMutable.value = PlayersState(
                         player = result.data?.player,
                         isLoading = result.loadingStatus,
                         error = result.message

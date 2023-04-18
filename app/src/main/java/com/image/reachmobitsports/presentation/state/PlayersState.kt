@@ -1,6 +1,6 @@
 package com.image.reachmobitsports.presentation.state
 
-import com.image.reachmobitsports.data.remote.responses.Player
+import com.image.reachmobitsports.data.i.responses.Player
 
 data class PlayersState(
     val player: MutableList<Player>? = arrayListOf(),

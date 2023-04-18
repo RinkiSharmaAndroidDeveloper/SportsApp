@@ -2,7 +2,7 @@ package com.image.reachmobitsports.presentation.adapter
 
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil
-import com.image.reachmobitsports.data.remote.responses.Player
+import com.image.reachmobitsports.data.i.responses.Player
 
 class PlayerEventsLeagueCallback(
     private val oldList: MutableList<Player>,

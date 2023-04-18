@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.image.reachmobitsports.R
-import com.image.reachmobitsports.data.remote.responses.Player
+import com.image.reachmobitsports.data.i.responses.Player
 import com.image.reachmobitsports.databinding.ItemEventLeagueHomeBinding
 
 class PlayerAdapter(private var listEventsLeagueData: MutableList<Player>) :
