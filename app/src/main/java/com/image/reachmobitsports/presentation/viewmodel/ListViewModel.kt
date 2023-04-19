@@ -9,6 +9,7 @@ import com.image.reachmobitsports.di.remote.Repository
 import com.image.reachmobitsports.presentation.state.PlayersState
 import com.image.reachmobitsports.presentation.state.SportsLeagueState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,7 +24,7 @@ class ListViewModel @Inject constructor(private val repository: Repository) : Vi
 
    //This method fetches all the teams in a league and returns a
     fun getSportsList() {
-        viewModelScope.launch {
+        viewModelScope.launch() {
             when (val result = repository.getAllLeagues()) {
                 is Resource.Loading -> {
                     mutableLiveData.value = SportsLeagueState(
