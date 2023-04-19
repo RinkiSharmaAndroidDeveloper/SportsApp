@@ -1,41 +1,36 @@
-# This is a basic work flow to get started with actions.
- 
- name: CI
- 
+# This is a basic workflow to get started with actions.
+name: CI
+
 # Controls when the action will you runs.
-
-On:
-
-# Trigger the work flow when push or pull request event happens only for master branch.
-  push: 
-      branches: [ main ]
+on:
+  # Trigger the workflow when push or pull request event happens only for main branch.
+  push:
+    branches: [main]
   pull_request:
-      branches: [ main ]
+    branches: [main]
       
-# Allow you to run this work flow manually from the action tab
-
+  # Allow you to run this workflow manually from the action tab
   workflow_dispatch:
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-Jobs:
- # This workflow contains a single job called 'build'
- build:
+jobs:
+  # This workflow contains a single job called 'build'
+  build:
     
-    test_jobs:
-      name: Assamble
-      runs_on: ubuntu-latest
-      steps:
-       -name: Checkout
-         run: actions/checkout@v2
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
          
-        -name:Restore Cache   
-        uses: actions/cache@v2
-        with:
+    - name: Restore Cache   
+      uses: actions/cache@v2
+      with:
         path: |
           ~/.gradle/caches
           ~/.gradle/wrapper
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
+        restore-keys: ${{ runner.os }}-gradle-
          
-        -name: Assamble Debug
-         run: ./gradlew assembleDebug
+    - name: Assemble Debug
+      run: ./gradlew assembleDebug
