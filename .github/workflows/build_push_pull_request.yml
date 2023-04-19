@@ -8,9 +8,9 @@ On:
 
 # Trigger the work flow when push or pull request event happens only for master branch.
   push: 
-      branches: [ master ]
+      branches: [ main ]
   pull_request:
-      branches: [ master ]
+      branches: [ main ]
       
 # Allow you to run this work flow manually from the action tab
 
