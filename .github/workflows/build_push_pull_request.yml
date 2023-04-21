@@ -1,36 +1,70 @@
 # This is a basic workflow to get started with actions.
 name: CI
 
-# Controls when the action will you runs.
+# Controls when the action will run.
 on:
-  # Trigger the workflow when push or pull request event happens only for main branch.
+  # Trigger the workflow when push or pull request event happens only for the main branch.
   push:
     branches: [main]
   pull_request:
     branches: [main]
       
-  # Allow you to run this workflow manually from the action tab
+  # Allow you to run this workflow manually from the action tab.
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel.
 jobs:
-  # This workflow contains a single job called 'build'
+  # This workflow contains a single job called 'build'.
   build:
-    
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
          
-    - name: Restore Cache   
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: ${{ runner.os }}-gradle-
+      - name: Restore Cache   
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-
          
-    - name: Assemble Debug
-      run: ./gradlew assembleDebug
+      - name: Assemble Debug
+        run: ./gradlew assembleDebug
+      
+  #   STEP 2: Upload the Artifact
+  upload-artifact:
+    needs: [build]
+    name: Upload the signed artifact
+    runs-on: self-hosted
+    steps:
+      - name: Upload Bundle
+        uses: actions/upload-artifact@v2
+        with:
+          name: signed_app_bundle
+          path: app/build/outputs/bundle/release/app-release.aab
+
+          
+  
+  # Step 3 : Release to playstore
+ # deploy:
+  # needs: [ build ]
+    # name: Create release on Playstore
+     #runs-on: self-hosted
+  #   steps:
+    #   - name: Create service_account.json
+    #     run: echo '${{ secrets.SERVICE_ACCOUNT_JSON }}' > service_account.json
+
+   #    - name: Deploy to Play Store
+   #      uses: r0adkll/upload-google-play@v1.0.15
+      #   with:
+    #       serviceAccountJson: service_account.json
+      #     packageName: ${{ github.event.inputs.app_id }}
+      #     releaseFiles: app/build/outputs/bundle/release/*.aab
+      #     track: internal
+       #    whatsNewDirectory: whatsnew/
+       #    mappingFile: app/build/outputs/mapping/release/mapping.txt
+        #   inAppUpdatePriority: 5
+
